@@ -1,8 +1,16 @@
 [versions]
 kotlin = "1.7.21"
 buildconfig = "3.0.3"
+junitJupiterApi = "5.9.0"
+junitJupiterEngine = "5.9.0"
+junitPlatformConsole = "1.9.0"
+junitJupiterParams = "5.9.0"
 
 [libraries]
+junitJupiterApi = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junitJupiterApi" }
+junitJupiterEngine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junitJupiterEngine" }
+junitPlatformConsole = { group = "org.junit.platform", name = "junit-platform-console", version.ref = "junitPlatformConsole" }
+junitJupiterParams = { group = "org.junit.jupiter", name = "junit-jupiter-params", version.ref = "junitJupiterParams" }
 
 [plugins]
 buildconfig = { id = "com.github.gmazzo.buildconfig", version.ref = "buildconfig" }
