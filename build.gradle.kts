@@ -13,19 +13,28 @@ plugins {
 group = "org.example"
 version = "1.0-SNAPSHOT"
 
-allprojects {
+subprojects {
+    apply(plugin = "org.jetbrains.kotlin.jvm")
+
     repositories {
         mavenCentral()
     }
 
     dependencies {
-        implementation("org.junit.jupiter:junit-jupiter-api:5.9.0")
-        runtimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.0")
-        runtimeOnly("org.junit.platform:junit-platform-console:1.9.0")
+        implementation(rootProject.libs.junitJupiterApi)
+        runtimeOnly(rootProject.libs.junitJupiterEngine)
+        runtimeOnly(rootProject.libs.junitPlatformConsole)
+        testImplementation(rootProject.libs.junitJupiterApi)
+        testImplementation(rootProject.libs.junitJupiterParams)
     }
 
     tasks.withType<KotlinCompile> {
         kotlinOptions.jvmTarget = "1.8"
+    }
+
+    tasks.test {
+        useJUnitPlatform()
+        outputs.upToDateWhen { false }
     }
 
     configureDiktat()

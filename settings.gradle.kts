@@ -1,5 +1,3 @@
-rootProject.name = "gradle-broken-build-hw"
-
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -7,4 +5,10 @@ pluginManagement {
     }
 }
 
-include("module1")
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+    }
+}
+
+include(":module1", ":module2")
